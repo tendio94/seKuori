@@ -3,9 +3,9 @@ package com.sekuori.webdriver.element;
 import org.junit.Test;
 
 public class KuoriWebElementTest {
-    @Test
-    public void testWrappedWebElementCreation() {
+    @Test(expected = SearchContextNotSetException.class)
+    public void testGetElementThrowsExceptionForNullSearchContext() {
         KuoriWebElement element = new KuoriWebElement();
-        element.get(KuoriWebElement.class, element);
+        element.get(KuoriWebElement.class, element.getWebDriver());
     }
 }
