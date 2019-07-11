@@ -1,4 +1,3 @@
-package com.sekuori.webdriver.element.config;
+package com.sekuori.webdriver.element.config.model;
 
-public class Locator {
-}
+public class Locator {}

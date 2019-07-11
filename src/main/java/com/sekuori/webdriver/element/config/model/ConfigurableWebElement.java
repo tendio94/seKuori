@@ -1,4 +1,4 @@
-package com.sekuori.webdriver.element.config;
+package com.sekuori.webdriver.element.config.model;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsElement;
@@ -8,5 +8,5 @@ public interface ConfigurableWebElement extends Locatable, WebElement, WrapsElem
     /**
      * @return object containing locators for this web element to be found by
      */
-    Void getLocatorsConfig();
+    Locator getLocators();
 }

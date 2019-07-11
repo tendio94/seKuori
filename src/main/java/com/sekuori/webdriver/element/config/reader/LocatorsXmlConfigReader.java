@@ -1,4 +1,6 @@
-package com.sekuori.webdriver.element.config;
+package com.sekuori.webdriver.element.config.reader;
+
+import com.sekuori.webdriver.element.config.model.ConfigEntity;
 
 import java.io.File;
 

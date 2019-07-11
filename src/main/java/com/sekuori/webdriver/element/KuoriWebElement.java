@@ -1,15 +1,21 @@
 package com.sekuori.webdriver.element;
 
-import com.sun.istack.internal.Nullable;
+import com.sekuori.webdriver.element.config.model.Locator;
+import org.jetbrains.annotations.NotNull;
 
-public class SekuoriWebElement extends ProxyWebElement {
+public class KuoriWebElement extends ProxyWebElement {
+    //default constructor implicitly defined - required for reflection calls
+    public KuoriWebElement() {
+
+    }
+
     @Override
-    public <T extends SekuoriWebElement> T get(T clazz, @Nullable NarrowedSearchContext context) {
+    public <T extends KuoriWebElement> T get(Class<? extends KuoriWebElement> clazz, @NotNull NarrowedSearchContext context) {
         return null;
     }
 
     @Override
-    public Void getLocatorsConfig() {
+    public Locator getLocators() {
         return null;
     }
 }
