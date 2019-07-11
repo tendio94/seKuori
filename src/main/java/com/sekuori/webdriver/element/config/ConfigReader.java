@@ -1,4 +1,7 @@
 package com.sekuori.webdriver.element.config;
 
-public class ConfigReader {
+import java.io.File;
+
+public interface ConfigReader {
+    ConfigEntity readFromFile(File configFile);
 }

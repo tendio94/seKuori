@@ -1,4 +1,9 @@
 package com.sekuori.webdriver.element.config;
 
-public class LocatorsConfig {
+import java.util.List;
+
+public class LocatorsConfig implements ConfigEntity {
+    private List<Locator> locators;
+
+    public class Locator {}
 }

@@ -1,4 +1,4 @@
 package com.sekuori.webdriver.element.config;
 
-public class LocatorsConfigReader {
+public abstract class LocatorsConfigReader implements ConfigReader {
 }
