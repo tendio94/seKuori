@@ -19,4 +19,12 @@ public class KuoriWebElementTest {
         KuoriWebElement element = new KuoriWebElement();
         element.get(KuoriWebElement.class, DRIVER);
     }
+
+    @Test
+    public void testGetElementFindsCustomElement() {
+        KuoriWebElement element = new KuoriWebElement();
+        DRIVER.get("https://www.google.com/");
+        element.get(DummyElement.class, DRIVER).getText();
+    }
+
 }
