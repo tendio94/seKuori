@@ -6,7 +6,7 @@ import org.junit.Test;
 public class LocatorsConfigTest {
 
     @Test
-    void test() {
+    public void test() {
         Assert.assertTrue(true);
     }
 
