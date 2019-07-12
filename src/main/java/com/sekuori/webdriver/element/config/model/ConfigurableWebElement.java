@@ -8,5 +8,5 @@ public interface ConfigurableWebElement extends Locatable, WebElement, WrapsElem
     /**
      * @return object containing locators for this web element to be found by
      */
-    Locator getLocators();
+    Locators getConfiguredLocators();
 }
