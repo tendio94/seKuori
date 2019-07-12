@@ -4,6 +4,14 @@ public class Locators {
     private String findByNameXpath;
     private String findContainerXpath;
 
+    public Locators() {
+    }
+
+    public Locators(String findByNameXpath, String findContainerXpath) {
+        this.findByNameXpath = findByNameXpath;
+        this.findContainerXpath = findContainerXpath;
+    }
+
     public String getFindByNameXpath() {
         return findByNameXpath;
     }

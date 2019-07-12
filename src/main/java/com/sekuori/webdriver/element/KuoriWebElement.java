@@ -3,10 +3,8 @@ package com.sekuori.webdriver.element;
 import com.sekuori.webdriver.element.config.model.Locators;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.util.Strings;
+import org.openqa.selenium.*;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
@@ -22,14 +20,18 @@ public class KuoriWebElement extends ProxyWebElement {
     public <T extends KuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent) {
         SearchContext searchContext = prepareSearchContext(parent);
         String xpath = getConfiguredLocators().getFindContainerXpath();
-        WebElement element = searchContext.findElement(By.xpath(xpath));
+        try {
+            WebElement element = searchContext.findElement(By.xpath(xpath));
+        } catch (NoSuchElementException e) {
+            throw new WebElementNotFoundException(e.getLocalizedMessage());
+        }
 
         return Constructor.construct(clazz, driver, element);
     }
 
     @Override
     public Locators getConfiguredLocators() {
-        return null;
+        return new Locators(Strings.EMPTY, Strings.EMPTY);
     }
 
     private SearchContext prepareSearchContext(SearchContext parent) {
