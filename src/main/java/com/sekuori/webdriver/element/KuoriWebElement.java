@@ -19,14 +19,17 @@ public class KuoriWebElement extends ProxyWebElement {
     @Override
     public <T extends KuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent) {
         SearchContext searchContext = prepareSearchContext(parent);
-        String xpath = getConfiguredLocators().getFindContainerXpath();
+        T instance = Constructor.getNewInstanceViaDefaultConstructor(clazz);
+        String xpath = instance.getConfiguredLocators().getFindContainerXpath();
+
         try {
             WebElement element = searchContext.findElement(By.xpath(xpath));
+            instance.setWebElement(element);
+            instance.setWebDriver(driver);
+            return instance;
         } catch (NoSuchElementException e) {
             throw new WebElementNotFoundException(e.getLocalizedMessage());
         }
-
-        return Constructor.construct(clazz, driver, element);
     }
 
     @Override
@@ -36,16 +39,31 @@ public class KuoriWebElement extends ProxyWebElement {
 
     private SearchContext prepareSearchContext(SearchContext parent) {
         checkSearchContext(parent);
-
+        setWebDriverFromContext(parent);
         SearchContext definedContext = (parent != null) ? parent : driver;
+
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("Defined and set search context for the element {}: {}", this, definedContext);
         }
         return definedContext;
     }
 
+    private void setWebDriverFromContext(SearchContext parent) {
+        if (parent == null) {
+            return;
+        }
+
+        if (parent instanceof WebDriver) {
+            this.driver = (WebDriver) parent;
+        } else if (parent instanceof SKWebElement) {
+            this.driver = ((SKWebElement) parent).getWebDriver();
+        } else {
+            LOGGER.warn("Couldn`t resolve web driver instance from the parent search context {}", parent);
+        }
+    }
+
     private void checkSearchContext(SearchContext parent) {
-        if ((driver == null) && (parent == null)) {
+        if ((this.driver == null) && (parent == null)) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.fatal("Couldn`t resolve search context for the web element {}: both " +
                         "element`s existing context and provided to method get() are null", this);
@@ -62,11 +80,11 @@ public class KuoriWebElement extends ProxyWebElement {
             return instance;
         }
 
-        private static <T extends KuoriWebElement> T getNewInstanceViaDefaultConstructor(Class<T> clazz) {
+        static <T extends KuoriWebElement> T getNewInstanceViaDefaultConstructor(Class<T> clazz) {
             try {
                 return clazz.getDeclaredConstructor().newInstance();
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                String message = String.format("Couldn`t instantiate web element of class %s. Cause : %s", clazz, e.getCause());
+                String message = String.format("Couldn`t instantiate web element of %s. Cause : %s", clazz, e.getMessage());
                 throw new RuntimeException(message);
             }
         }

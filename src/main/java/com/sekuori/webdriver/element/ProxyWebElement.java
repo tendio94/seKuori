@@ -16,7 +16,7 @@ abstract class ProxyWebElement implements SKWebElement {
     }
 
     @Override
-    public WebElement getWrappedElement() {
+    public WebElement getWebElement() {
         return element;
     }
 
@@ -25,6 +25,7 @@ abstract class ProxyWebElement implements SKWebElement {
         this.element = element;
     }
 
+    @Override
     public WebDriver getWebDriver() {
         return driver;
     }
@@ -117,5 +118,10 @@ abstract class ProxyWebElement implements SKWebElement {
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return element.getScreenshotAs(outputType);
+    }
+
+    @Override
+    public WebElement getWrappedElement() {
+        return getWebElement();
     }
 }

@@ -8,4 +8,8 @@ interface SKWebElement extends NarrowedSearchContext, ConfigurableWebElement {
     void setWebElement(WebElement element);
 
     void setWebDriver(WebDriver driver);
+
+    WebElement getWebElement();
+
+    WebDriver getWebDriver();
 }
