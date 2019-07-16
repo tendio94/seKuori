@@ -19,6 +19,4 @@ interface NarrowedSearchContext extends SearchContext {
     <T extends KuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent, String name, int number);
 
     <T extends KuoriWebElement> List<T> getAll(Class<T> clazz, @Nullable SearchContext parent);
-
-    <T extends KuoriWebElement> List<T> getAll(Class<T> clazz, @Nullable SearchContext parent, String name);
 }

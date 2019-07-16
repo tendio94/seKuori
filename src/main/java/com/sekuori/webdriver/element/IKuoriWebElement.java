@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsElement;
 import org.openqa.selenium.interactions.Locatable;
 
-interface SKWebElement extends NarrowedSearchContext, Locatable, WebElement, WrapsElement {
+interface IKuoriWebElement extends NarrowedSearchContext, Locatable, WebElement, WrapsElement {
     WebElement getWebElement();
 
     void setWebElement(WebElement element);

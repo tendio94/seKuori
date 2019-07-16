@@ -3,7 +3,7 @@ package com.sekuori.webdriver.element.config;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LocatorsConfigTest {
+public class WebElementsLocatorsConfigTest {
 
     @Test
     public void test() {

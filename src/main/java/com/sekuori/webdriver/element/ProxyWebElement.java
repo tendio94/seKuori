@@ -1,14 +1,29 @@
 package com.sekuori.webdriver.element;
 
+import com.sekuori.webdriver.element.config.WebElementsXmlConfigProvider;
+import com.sekuori.webdriver.element.config.model.Locators;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Coordinates;
 import org.openqa.selenium.interactions.Locatable;
 
 import java.util.List;
 
-abstract class ProxyWebElement implements SKWebElement {
+abstract class ProxyWebElement implements IKuoriWebElement {
+    protected static final WebElementsXmlConfigProvider CONFIG_PROVIDER = new WebElementsXmlConfigProvider();
     protected WebElement element;
     protected WebDriver driver;
+
+    protected String getFindByNameXpath(Class clazz) {
+        return CONFIG_PROVIDER.getFindByNameXpath(clazz);
+    }
+
+    protected String getFindContainerXpath(Class clazz) {
+        return CONFIG_PROVIDER.getFindContainerXpath(clazz);
+    }
+
+    protected Locators getConfiguredLocators() {
+        return CONFIG_PROVIDER.getLocatorsForClass(getClass());
+    }
 
     @Override
     public Coordinates getCoordinates() {

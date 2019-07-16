@@ -1,4 +1,5 @@
 package com.sekuori.webdriver.element.config.reader;
 
-public abstract class LocatorsConfigReader implements ConfigReader {
+abstract class LocatorsConfigReader implements ConfigReader {
+    static final String DEFAULT_XML_CONFIG_PATH = "./webElementsConfig.xml";
 }

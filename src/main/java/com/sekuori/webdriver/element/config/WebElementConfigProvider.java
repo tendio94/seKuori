@@ -1,12 +1,13 @@
-package com.sekuori.webdriver.element.config.model;
+package com.sekuori.webdriver.element.config;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WrapsElement;
-import org.openqa.selenium.interactions.Locatable;
+import com.sekuori.webdriver.element.config.model.Locators;
+import com.sekuori.webdriver.element.config.reader.ConfigReader;
 
-public interface ConfigurableWebElement extends Locatable, WebElement, WrapsElement {
+public interface WebElementConfigProvider {
     /**
-     * @return object containing locators for this web element to be found by
+     * @return object containing locators for web element of particular class
      */
-    Locators getConfiguredLocators();
+    Locators getLocatorsForClass(Class clazz);
+
+    ConfigReader getConfigReader();
 }

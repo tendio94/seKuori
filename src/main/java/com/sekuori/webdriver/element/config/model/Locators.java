@@ -1,15 +1,25 @@
 package com.sekuori.webdriver.element.config.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "element")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Locators {
+    private String className;
     private String findByNameXpath;
     private String findContainerXpath;
 
     public Locators() {
     }
 
-    public Locators(String findByNameXpath, String findContainerXpath) {
-        this.findByNameXpath = findByNameXpath;
-        this.findContainerXpath = findContainerXpath;
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     public String getFindByNameXpath() {

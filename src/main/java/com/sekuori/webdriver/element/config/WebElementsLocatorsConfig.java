@@ -1,4 +1,7 @@
-package com.sekuori.webdriver.element.config.model;
+package com.sekuori.webdriver.element.config;
+
+import com.sekuori.webdriver.element.config.model.ConfigEntity;
+import com.sekuori.webdriver.element.config.model.Locators;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
