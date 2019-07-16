@@ -1,0 +1,7 @@
+<elements>
+    <element>
+        <className>com.sekuori.webdriver.element.DummyElement</className>
+        <findByNameXpath>.//*[@aria-label='%s']</findByNameXpath>
+        <findContainerXpath>.//input</findContainerXpath>
+    </element>
+</elements>
