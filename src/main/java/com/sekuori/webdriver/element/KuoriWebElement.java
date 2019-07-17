@@ -24,6 +24,7 @@ public class KuoriWebElement extends ProxyWebElement {
         return Constructor.construct(clazz, driver, element);
     }
 
+
     @Override
     public <T extends KuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent, int number) {
         WebElementBuilder<T> builder = new WebElementBuilder<>(driver);

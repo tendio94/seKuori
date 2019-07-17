@@ -19,7 +19,7 @@ public class LocatorsXmlConfigReader extends LocatorsConfigReader {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (WebElementsLocatorsConfig) jaxbUnmarshaller.unmarshal(actualConfig);
         } catch (JAXBException e) {
-            throw new ConfigNotReadException(e.getMessage());
+            throw new ConfigNotReadException(e.getMessage(), e);
         }
     }
 
