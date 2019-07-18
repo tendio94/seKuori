@@ -7,37 +7,36 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class WebElementBuilder<E extends WebElement> {
-    private static final Logger LOGGER = LogManager.getLogger();
+import static com.sekuori.webdriver.element.ProxyWebElement.CONFIG_PROVIDER;
 
-    private KuoriWebElement kuoriWebElement;
+public class WebElementBuilder {
+    private static final Logger LOGGER = LogManager.getLogger();
     private int numberLocator;
     private WebDriver driver;
     private SearchContext context;
-    private Class<E> clazz;
+    private Class<? extends WebElement> clazz;
     private String nameLocator;
 
-    public WebElementBuilder(KuoriWebElement kuoriWebElement, WebDriver driver) {
-        this.kuoriWebElement = kuoriWebElement;
+    public WebElementBuilder(WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElementBuilder<E> ofClass(Class<E> clazz) {
+    public WebElementBuilder ofClass(Class<? extends WebElement> clazz) {
         this.clazz = clazz;
         return this;
     }
 
-    public WebElementBuilder<E> withContext(@Nullable SearchContext context) {
+    public WebElementBuilder withContext(@Nullable SearchContext context) {
         this.context = context;
         return this;
     }
 
-    public WebElementBuilder<E> withNameLocator(@Nullable String nameLocator) {
+    public WebElementBuilder withNameLocator(@Nullable String nameLocator) {
         this.nameLocator = nameLocator;
         return this;
     }
 
-    public WebElementBuilder<E> withNumberLocator(int numberLocator) {
+    public WebElementBuilder withNumberLocator(int numberLocator) {
         this.numberLocator = numberLocator;
         return this;
     }
@@ -73,9 +72,9 @@ public class WebElementBuilder<E extends WebElement> {
     }
 
     private String resolveXpathLocator(Class clazz, @Nullable String name) {
-        String xpath = kuoriWebElement.getFindContainerXpath(clazz);
+        String xpath = CONFIG_PROVIDER.getFindContainerXpath(clazz);
         if (name != null) {
-            xpath = String.format(kuoriWebElement.getFindByNameXpath(clazz), name);
+            xpath = String.format(CONFIG_PROVIDER.getFindByNameXpath(clazz), name);
         }
         return xpath;
     }
