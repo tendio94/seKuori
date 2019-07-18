@@ -9,14 +9,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement<T> {
+public class KuoriWebElement<T extends KuoriWebElement> extends ProxyWebElement<T> {
     //default constructor implicitly defined - required for reflection calls
     public KuoriWebElement() {
     }
 
     @Override
     public T get(Class<T> clazz, @Nullable SearchContext parent) {
-        WebElementBuilder<T> builder = new WebElementBuilder<>(this, driver);
+        WebElementBuilder builder = new WebElementBuilder(driver);
         WebElement element = builder.ofClass(clazz)
                 .withContext(parent).getElement();
         return Constructor.construct(clazz, driver, element);
@@ -25,7 +25,7 @@ public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement
 
     @Override
     public T get(Class<T> clazz, @Nullable SearchContext parent, int number) {
-        WebElementBuilder<T> builder = new WebElementBuilder<>(this, driver);
+        WebElementBuilder builder = new WebElementBuilder(driver);
         WebElement element = builder.ofClass(clazz)
                 .withContext(parent).withNumberLocator(number).getElement();
         return Constructor.construct(clazz, driver, element);
@@ -33,7 +33,7 @@ public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement
 
     @Override
     public T get(Class<T> clazz, @Nullable SearchContext parent, String name) {
-        WebElementBuilder<T> builder = new WebElementBuilder<>(this, driver);
+        WebElementBuilder builder = new WebElementBuilder(driver);
         WebElement element = builder.ofClass(clazz)
                 .withContext(parent).withNameLocator(name).getElement();
         return Constructor.construct(clazz, driver, element);
@@ -41,7 +41,7 @@ public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement
 
     @Override
     public T get(Class<T> clazz, @Nullable SearchContext parent, String name, int number) {
-        WebElementBuilder<T> builder = new WebElementBuilder<>(this, driver);
+        WebElementBuilder builder = new WebElementBuilder(driver);
         WebElement element = builder.ofClass(clazz)
                 .withContext(parent).withNumberLocator(number).withNameLocator(name).getElement();
         return Constructor.construct(clazz, driver, element);
@@ -49,7 +49,7 @@ public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement
 
     @Override
     public List<T> getAll(Class<T> clazz, @Nullable SearchContext parent) {
-        WebElementBuilder<T> builder = new WebElementBuilder<>(this, driver);
+        WebElementBuilder builder = new WebElementBuilder(driver);
         List<WebElement> elements = builder.ofClass(clazz)
                 .withContext(parent).getElements();
         return (elements != null) ? elements.stream()
