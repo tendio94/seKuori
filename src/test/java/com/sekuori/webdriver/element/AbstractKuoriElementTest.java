@@ -3,9 +3,12 @@ package com.sekuori.webdriver.element;
 import com.sekuori.webdriver.WebDriverForTest;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class AbstractWebElementTest {
+public abstract class AbstractKuoriElementTest {
     protected static final AfterLoginSeleniumAction DEFAULT_SLEEP_ACTION =
             () -> {
                 try {
@@ -36,14 +39,30 @@ public abstract class AbstractWebElementTest {
         }
     }
 
-    @Test
-    public abstract void testElementIsFound();
+    protected static SearchContext getRootContext(WebDriver driver) {
+        return driver.findElement(By.xpath(".//html"));
+    }
 
     @Test(expected = WebElementNotFoundException.class)
     public abstract void testElementIsNotFound();
 
     @Test
-    public abstract void testDifferentSearchStrategies();
+    public abstract void testDifferentSearchStrategiesFindSameElement();
+
+    @Test
+    public abstract void testGetAllElements();
+
+    @Test
+    public abstract void testElementIsFoundByName();
+
+    @Test
+    public abstract void testElementIsFoundByNumber();
+
+    @Test
+    public abstract void testElementIsFoundByNameAndNumber();
+
+    @Test
+    public abstract void testElementIsFoundByParentContext();
 
     @FunctionalInterface
     public interface AfterLoginSeleniumAction {

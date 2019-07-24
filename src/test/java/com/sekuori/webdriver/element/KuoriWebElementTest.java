@@ -1,5 +1,6 @@
 package com.sekuori.webdriver.element;
 
+import com.sekuori.webdriver.Urls;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,11 +16,11 @@ public class KuoriWebElementTest {
 
     @Test
     public void testGetElementFindsWebElementByCustomConfiguration() {
-        KuoriWebElement<DummyElement> element = new KuoriWebElement<>();
-        getDriver().get("https://www.google.com/");
+        KuoriWebElement<TextInput> element = new KuoriWebElement<>();
+        getDriver().get(Urls.LOGIN);
 
         String expectedTagName = "input";
-        String actualTagName = element.get(DummyElement.class, getDriver(), "Мне повезёт!").getTagName();
+        String actualTagName = element.get(TextInput.class, getDriver(), "Username").getTagName();
         Assert.assertEquals(expectedTagName, actualTagName);
     }
 

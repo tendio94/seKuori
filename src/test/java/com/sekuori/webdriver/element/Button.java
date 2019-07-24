@@ -1,6 +1,4 @@
-package com.sekuori.webdriver.element.config;
-
-import com.sekuori.webdriver.element.KuoriWebElement;
+package com.sekuori.webdriver.element;
 
 public class Button extends KuoriWebElement<Button> {
 }
