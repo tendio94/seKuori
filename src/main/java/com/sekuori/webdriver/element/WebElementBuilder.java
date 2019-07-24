@@ -27,7 +27,7 @@ public class WebElementBuilder {
     }
 
     public WebElementBuilder withContext(@Nullable SearchContext context) {
-        this.context = context;
+        this.context = (this.driver != null) ? this.driver : context;
         return this;
     }
 

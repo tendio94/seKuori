@@ -14,6 +14,10 @@ public class KuoriWebElement<T extends KuoriWebElement> extends ProxyWebElement<
     public KuoriWebElement() {
     }
 
+    public KuoriWebElement(WebDriver driver) {
+        this.driver = driver;
+    }
+
     @Override
     public T get(Class<T> clazz, @Nullable SearchContext parent) {
         WebElementBuilder builder = new WebElementBuilder(driver);
