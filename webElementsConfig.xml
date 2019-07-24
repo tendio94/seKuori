@@ -4,4 +4,14 @@
         <findByNameXpath>.//*[@aria-label='%s']</findByNameXpath>
         <findContainerXpath>.//input</findContainerXpath>
     </element>
+    <element>
+        <className>com.sekuori.webdriver.element.TextInput</className>
+        <findByNameXpath>.//label[contains(text(),'%s')]/following-sibling::input[@type='text']</findByNameXpath>
+        <findContainerXpath>.//input[@type='text']</findContainerXpath>
+    </element>
+    <element>
+        <className>com.sekuori.webdriver.element.Button</className>
+        <findByNameXpath>.//button[contains(text(),'%s')]</findByNameXpath>
+        <findContainerXpath>.//button</findContainerXpath>
+    </element>
 </elements>
