@@ -14,4 +14,9 @@
         <findByNameXpath>.//button[contains(text(),'%s')]</findByNameXpath>
         <findContainerXpath>.//button</findContainerXpath>
     </element>
+    <element>
+        <className>com.sekuori.webdriver.element.SiblingDiv</className>
+        <findByNameXpath>.//div[contains(@id, 'sibling') and contains(text(), '%s')]</findByNameXpath>
+        <findContainerXpath>.//div[contains(@id, 'sibling')]</findContainerXpath>
+    </element>
 </elements>
