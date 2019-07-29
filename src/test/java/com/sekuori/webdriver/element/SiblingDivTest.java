@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Collection;
 

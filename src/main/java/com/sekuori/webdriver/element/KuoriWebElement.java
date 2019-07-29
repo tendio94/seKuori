@@ -6,7 +6,7 @@ import org.openqa.selenium.SearchContext;
 
 import java.util.List;
 
-public class KuoriWebElement<T extends IKuoriWebElement> extends IKuoriWebElementImpl {
+public class KuoriWebElement extends IKuoriWebElementImpl {
     //default constructor implicitly defined - required for reflection calls
     public KuoriWebElement() {
         this.driver = new KuoriWebDriver(driver);
@@ -16,23 +16,23 @@ public class KuoriWebElement<T extends IKuoriWebElement> extends IKuoriWebElemen
         this.driver = driver;
     }
 
-    public T get(Class<T> clazz, @Nullable SearchContext parent) {
+    public <T extends IKuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent) {
         return driver.get(clazz, parent);
     }
 
-    public T get(Class<T> clazz, @Nullable SearchContext parent, int number) {
+    public <T extends IKuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent, int number) {
         return driver.get(clazz, parent, number);
     }
 
-    public T get(Class<T> clazz, @Nullable SearchContext parent, String name) {
+    public <T extends IKuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent, String name) {
         return driver.get(clazz, parent, name);
     }
 
-    public T get(Class<T> clazz, @Nullable SearchContext parent, String name, int number) {
+    public <T extends IKuoriWebElement> T get(Class<T> clazz, @Nullable SearchContext parent, String name, int number) {
         return driver.get(clazz, parent, name, number);
     }
 
-    public List<T> getAll(Class<T> clazz, @Nullable SearchContext parent) {
+    public <T extends IKuoriWebElement> List<T> getAll(Class<T> clazz, @Nullable SearchContext parent) {
         return driver.getAll(clazz, parent);
     }
 }

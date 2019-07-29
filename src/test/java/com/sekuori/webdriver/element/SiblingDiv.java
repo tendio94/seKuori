@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SiblingDiv extends KuoriWebElement<SiblingDiv> {
+public class SiblingDiv extends KuoriWebElement {
     public WebElement getFollowingSibling() {
         return findElement(By.xpath(".//following-sibling::*"));
     }

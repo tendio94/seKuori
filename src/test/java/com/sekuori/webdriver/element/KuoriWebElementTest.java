@@ -17,13 +17,13 @@ public class KuoriWebElementTest {
 
     @Test(expected = SearchContextNotSetException.class)
     public void testGetElementThrowsExceptionForNullSearchContext() {
-        KuoriWebElement<KuoriWebElement> element = new KuoriWebElement<>();
+        KuoriWebElement element = new KuoriWebElement();
         element.get(KuoriWebElement.class, null);
     }
 
     @Test
     public void testGetElementFindsWebElementByCustomConfiguration() {
-        KuoriWebElement<TextInput> element = new KuoriWebElement<>();
+        KuoriWebElement element = new KuoriWebElement();
         getDriver().get(Urls.LOGIN);
 
         String expectedTagName = "input";

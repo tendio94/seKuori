@@ -1,7 +1,6 @@
 package com.sekuori.webdriver.element;
 
 import com.sekuori.webdriver.KuoriWebDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.lang.reflect.InvocationTargetException;
