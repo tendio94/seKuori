@@ -1,6 +1,7 @@
 package com.sekuori.webdriver.element;
 
 import com.sekuori.webdriver.WebDriverForTest;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -41,6 +42,12 @@ public abstract class AbstractKuoriElementTest {
 
     protected static SearchContext getRootContext(WebDriver driver) {
         return driver.findElement(By.xpath(".//html"));
+    }
+
+    //destroying WebDriver after each sub-class is executed to clean up caches/context/session
+    @AfterClass
+    public static void tearDown() {
+        WebDriverForTest.destroy();
     }
 
     @Test(expected = WebElementNotFoundException.class)

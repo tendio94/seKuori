@@ -1,4 +1,4 @@
 package com.sekuori.webdriver.element;
 
-public class Button extends KuoriWebElement<Button> {
+public class Button extends KuoriWebElement {
 }

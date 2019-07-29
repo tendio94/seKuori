@@ -1,6 +1,7 @@
 package com.sekuori.webdriver.element;
 
 import com.sekuori.junit.runners.OrderedRunner;
+import com.sekuori.webdriver.KuoriWebDriver;
 import com.sekuori.webdriver.Urls;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -14,9 +15,9 @@ import static com.sekuori.webdriver.WebDriverForTest.getDriver;
 public class ButtonTest extends AbstractKuoriElementTest {
     private static final String DELETE_LABEL = "Delete";
     private static final String ADD_ELEMENT_LABEL = "Add Element";
-    private static final NarrowedSearchContext<Button> CONTEXT = new KuoriWebElement<>(getDriver());
+    private static final KuoriWebDriver DRIVER = new KuoriWebDriver(getDriver());
     private static final AfterLoginSeleniumAction ADD_ELEMENT_ACTION = () ->
-            CONTEXT.get(Button.class, null, ADD_ELEMENT_LABEL).click();
+            DRIVER.get(Button.class, null, ADD_ELEMENT_LABEL).click();
 
     @BeforeClass
     public static void init() {
@@ -28,7 +29,7 @@ public class ButtonTest extends AbstractKuoriElementTest {
     @Override
     @OrderedRunner.Order(order = 1)
     public void testGetAllElements() {
-        Collection<Button> buttons = CONTEXT.getAll(Button.class, null);
+        Collection<Button> buttons = DRIVER.getAll(Button.class, null);
 
         final int expectedSize = 4;
         Assert.assertEquals(expectedSize, buttons.size());
@@ -37,21 +38,21 @@ public class ButtonTest extends AbstractKuoriElementTest {
     @Test
     @Override
     public void testElementIsFoundByName() {
-        Button input = CONTEXT.get(Button.class, null, ADD_ELEMENT_LABEL);
+        Button input = DRIVER.get(Button.class, null, ADD_ELEMENT_LABEL);
 
         Assert.assertEquals(ADD_ELEMENT_LABEL, input.getText());
     }
 
     @Override
     public void testElementIsFoundByNumber() {
-        Button input = CONTEXT.get(Button.class, null, 1);
+        Button input = DRIVER.get(Button.class, null, 1);
 
         Assert.assertEquals(ADD_ELEMENT_LABEL, input.getText());
     }
 
     @Override
     public void testElementIsFoundByNameAndNumber() {
-        Button input = CONTEXT.get(Button.class, null, ADD_ELEMENT_LABEL, 1);
+        Button input = DRIVER.get(Button.class, null, ADD_ELEMENT_LABEL, 1);
 
         Assert.assertEquals(ADD_ELEMENT_LABEL, input.getText());
     }
@@ -59,7 +60,7 @@ public class ButtonTest extends AbstractKuoriElementTest {
     @Override
     public void testElementIsFoundByParentContext() {
         SearchContext parentContext = getRootContext(getDriver());
-        Button input = CONTEXT.get(Button.class, parentContext, ADD_ELEMENT_LABEL, 1);
+        Button input = DRIVER.get(Button.class, parentContext, ADD_ELEMENT_LABEL, 1);
 
         Assert.assertEquals(ADD_ELEMENT_LABEL, input.getText());
     }
@@ -67,15 +68,15 @@ public class ButtonTest extends AbstractKuoriElementTest {
     @Override
     @Test(expected = WebElementNotFoundException.class)
     public void testElementIsNotFound() {
-        CONTEXT.get(Button.class, null, "Idon`texist");
+        DRIVER.get(Button.class, null, "Idon`texist");
     }
 
     @Test
     @Override
     public void testDifferentSearchStrategiesFindSameElement() {
-        Button foundByName = CONTEXT.get(Button.class, null, ADD_ELEMENT_LABEL);
-        Button foundByNumber = CONTEXT.get(Button.class, null, null, 1);
-        Button foundByNameAndNumber = CONTEXT.get(Button.class, null, ADD_ELEMENT_LABEL, 1);
+        Button foundByName = DRIVER.get(Button.class, null, ADD_ELEMENT_LABEL);
+        Button foundByNumber = DRIVER.get(Button.class, null, null, 1);
+        Button foundByNameAndNumber = DRIVER.get(Button.class, null, ADD_ELEMENT_LABEL, 1);
 
         assertWebElementsAreSame(foundByName, foundByNumber, foundByNameAndNumber);
     }
