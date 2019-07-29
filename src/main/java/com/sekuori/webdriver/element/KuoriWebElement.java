@@ -6,7 +6,7 @@ import org.openqa.selenium.SearchContext;
 
 import java.util.List;
 
-public class KuoriWebElement<T extends IKuoriWebElement> extends ProxyWebElement {
+public class KuoriWebElement<T extends IKuoriWebElement> extends IKuoriWebElementImpl {
     //default constructor implicitly defined - required for reflection calls
     public KuoriWebElement() {
         this.driver = new KuoriWebDriver(driver);

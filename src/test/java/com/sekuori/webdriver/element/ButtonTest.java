@@ -21,7 +21,7 @@ public class ButtonTest extends AbstractKuoriElementTest {
 
     @BeforeClass
     public static void init() {
-        performInitialSetup(Urls.ELEMENTS, ADD_ELEMENT_ACTION, ADD_ELEMENT_ACTION, ADD_ELEMENT_ACTION);
+        performInitialSetup(Urls.ADD_REMOVE_ELEMENTS, ADD_ELEMENT_ACTION, ADD_ELEMENT_ACTION, ADD_ELEMENT_ACTION);
     }
 
     //making sure this test is executed first by setting order
@@ -32,7 +32,8 @@ public class ButtonTest extends AbstractKuoriElementTest {
         Collection<Button> buttons = DRIVER.getAll(Button.class, null);
 
         final int expectedSize = 4;
-        Assert.assertEquals(expectedSize, buttons.size());
+        final int actualSize = (buttons != null) ? buttons.size() : 0;
+        Assert.assertEquals(expectedSize, actualSize);
     }
 
     @Test

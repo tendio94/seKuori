@@ -1,5 +1,6 @@
 package com.sekuori.webdriver.element;
 
+import com.sekuori.webdriver.element.config.WebElementsXmlConfigProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -7,9 +8,8 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-import static com.sekuori.webdriver.element.ProxyWebElement.CONFIG_PROVIDER;
-
 public class WebElementBuilder {
+    private static final WebElementsXmlConfigProvider CONFIG_PROVIDER = new WebElementsXmlConfigProvider();
     private static final Logger LOGGER = LogManager.getLogger();
     private int numberLocator;
     private WebDriver driver;

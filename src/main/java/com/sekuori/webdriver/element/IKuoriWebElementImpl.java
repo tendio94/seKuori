@@ -8,8 +8,7 @@ import org.openqa.selenium.interactions.Locatable;
 
 import java.util.List;
 
-abstract class ProxyWebElement implements IKuoriWebElement {
-    static final WebElementsXmlConfigProvider CONFIG_PROVIDER = new WebElementsXmlConfigProvider();
+abstract class IKuoriWebElementImpl implements IKuoriWebElement {
     protected WebElement element;
     protected KuoriWebDriver driver;
 
