@@ -27,7 +27,7 @@ public class WebElementBuilder {
     }
 
     public WebElementBuilder withContext(@Nullable SearchContext context) {
-        this.context = (this.driver != null) ? this.driver : context;
+        this.context = (context != null) ? context : this.driver;
         return this;
     }
 
@@ -91,8 +91,8 @@ public class WebElementBuilder {
 
     private void checkSearchContext() {
         if ((this.driver == null) && (context == null)) {
-            LOGGER.fatal("Couldn`t resolve search context for the web element {}: both " +
-                    "element`s existing context and provided to method get() are null", this);
+            LOGGER.fatal("Couldn`t resolve search context for the web element {}:" +
+                    " both driver and parent contexts are null", this);
             throw new SearchContextNotSetException();
         }
     }

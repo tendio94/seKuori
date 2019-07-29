@@ -1,17 +1,16 @@
 package com.sekuori.webdriver.element;
 
-import org.openqa.selenium.WebDriver;
+import com.sekuori.webdriver.KuoriWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsElement;
 import org.openqa.selenium.interactions.Locatable;
 
-interface IKuoriWebElement<T extends IKuoriWebElement>
-        extends NarrowedSearchContext<T>, Locatable, WebElement, WrapsElement {
+public interface IKuoriWebElement extends Locatable, WebElement, WrapsElement {
     WebElement getWebElement();
 
     void setWebElement(WebElement element);
 
-    WebDriver getWebDriver();
+    KuoriWebDriver getWebDriver();
 
-    void setWebDriver(WebDriver driver);
+    void setWebDriver(KuoriWebDriver driver);
 }

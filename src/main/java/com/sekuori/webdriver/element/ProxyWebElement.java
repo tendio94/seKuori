@@ -1,5 +1,6 @@
 package com.sekuori.webdriver.element;
 
+import com.sekuori.webdriver.KuoriWebDriver;
 import com.sekuori.webdriver.element.config.WebElementsXmlConfigProvider;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Coordinates;
@@ -7,10 +8,10 @@ import org.openqa.selenium.interactions.Locatable;
 
 import java.util.List;
 
-abstract class ProxyWebElement<T extends IKuoriWebElement> implements IKuoriWebElement<T> {
+abstract class ProxyWebElement implements IKuoriWebElement {
     static final WebElementsXmlConfigProvider CONFIG_PROVIDER = new WebElementsXmlConfigProvider();
     protected WebElement element;
-    protected WebDriver driver;
+    protected KuoriWebDriver driver;
 
     @Override
     public Coordinates getCoordinates() {
@@ -28,12 +29,12 @@ abstract class ProxyWebElement<T extends IKuoriWebElement> implements IKuoriWebE
     }
 
     @Override
-    public WebDriver getWebDriver() {
+    public KuoriWebDriver getWebDriver() {
         return driver;
     }
 
     @Override
-    public void setWebDriver(WebDriver driver) {
+    public void setWebDriver(KuoriWebDriver driver) {
         this.driver = driver;
     }
 
