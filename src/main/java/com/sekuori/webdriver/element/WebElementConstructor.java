@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class Constructor {
+public final class WebElementConstructor {
+    private WebElementConstructor() {
+    }
+
     public static <T extends IKuoriWebElement> T construct(Class<T> clazz, KuoriWebDriver driver, WebElement element) {
         T instance = getNewInstanceViaDefaultConstructor(clazz);
         instance.setWebElement(element);
