@@ -2,7 +2,6 @@ package com.sekuori.webdriver;
 
 import com.sekuori.webdriver.element.Constructor;
 import com.sekuori.webdriver.element.IKuoriWebElement;
-import com.sekuori.webdriver.element.KuoriWebElement;
 import com.sekuori.webdriver.element.WebElementBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.SearchContext;
@@ -18,6 +17,7 @@ public final class KuoriWebDriver extends RemoteWebDriver
     private WebDriver driver;
 
     public KuoriWebDriver(WebDriver driver) {
+        super();
         this.driver = driver;
     }
 
