@@ -1,6 +1,5 @@
 package com.sekuori.webdriver.element;
 
-import com.sekuori.webdriver.KuoriWebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.lang.reflect.InvocationTargetException;
@@ -9,14 +8,13 @@ public final class WebElementConstructor {
     private WebElementConstructor() {
     }
 
-    public static <T extends IKuoriWebElement> T construct(Class<T> clazz, KuoriWebDriver driver, WebElement element) {
+    public static <T extends WebElementContainer> T construct(Class<T> clazz, WebElement element) {
         T instance = getNewInstanceViaDefaultConstructor(clazz);
         instance.setWebElement(element);
-        instance.setWebDriver(driver);
         return instance;
     }
 
-    private static <T extends IKuoriWebElement> T getNewInstanceViaDefaultConstructor(Class<T> clazz) {
+    private static <T extends WebElementContainer> T getNewInstanceViaDefaultConstructor(Class<T> clazz) {
         try {
             return clazz.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {

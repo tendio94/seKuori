@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class WebElementBuilder {
+public final class WebElementBuilder {
     private static final WebElementsXmlConfigProvider CONFIG_PROVIDER = new WebElementsXmlConfigProvider();
     private static final Logger LOGGER = LogManager.getLogger();
     private int numberLocator;
