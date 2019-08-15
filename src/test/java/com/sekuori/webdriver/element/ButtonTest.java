@@ -12,7 +12,7 @@ import java.util.Collection;
 
 import static com.sekuori.webdriver.WebDriverForTest.getDriver;
 
-public class ButtonTest extends AbstractKuoriElementTest {
+public class ButtonTest extends WebElementTest {
     private static final String DELETE_LABEL = "Delete";
     private static final String ADD_ELEMENT_LABEL = "Add Element";
     private static final KuoriWebDriver DRIVER = new KuoriWebDriver(getDriver());

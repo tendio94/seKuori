@@ -9,7 +9,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class AbstractKuoriElementTest {
+public abstract class WebElementTest {
     protected static final AfterLoginSeleniumAction DEFAULT_SLEEP_ACTION =
             () -> {
                 try {

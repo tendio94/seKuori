@@ -22,6 +22,18 @@ public class KuoriWebElementTest {
     }
 
     @Test
+    public void testGetElementWithDriverSetInConstructor() {
+        KuoriWebElement element = new KuoriWebElement();
+        element.get(TextInput.class, getDriver());
+    }
+
+    @Test
+    public void testGetElementWithNullDriver() {
+        KuoriWebElement element = new KuoriWebElement(null);
+        element.get(TextInput.class, getDriver());
+    }
+
+    @Test
     public void testGetElementFindsWebElementByCustomConfiguration() {
         KuoriWebElement element = new KuoriWebElement();
         getDriver().get(Urls.LOGIN);

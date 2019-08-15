@@ -11,7 +11,7 @@ import java.util.Collection;
 
 import static com.sekuori.webdriver.WebDriverForTest.getDriver;
 
-public class TextInputTest extends AbstractKuoriElementTest {
+public class TextInputTest extends WebElementTest {
     private static final String INPUT_LABEL = "Username";
     private static final String TEXT_INPUT_TYPE = "text";
     private static final KuoriWebDriver DRIVER = new KuoriWebDriver(getDriver());

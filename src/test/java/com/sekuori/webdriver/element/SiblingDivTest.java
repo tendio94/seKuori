@@ -6,13 +6,12 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebDriver;
 
 import java.util.Collection;
 
 import static com.sekuori.webdriver.WebDriverForTest.getDriver;
 
-public class SiblingDivTest extends AbstractKuoriElementTest {
+public class SiblingDivTest extends WebElementTest {
     private static final String SIBLING_NAME = "1.3";
     private static final KuoriWebDriver DRIVER = new KuoriWebDriver(getDriver());
 

@@ -29,7 +29,6 @@ public class WebElementsXmlConfigProviderTest {
     @Test
     public void getLocatorsForClass() {
         Assert.assertNotNull(CONFIG_PROVIDER.getLocatorsForClass(CLASS));
-
     }
 
     @Test
