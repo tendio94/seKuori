@@ -80,34 +80,22 @@ public class WebElementBuilder {
     }
 
     private void prepareSearchContext() {
-        checkSearchContext();
-        setWebDriverFromContext();
-        SearchContext definedContext = (context != null) ? context : driver;
+        SearchContext definedContext = checkSearchContext();
 
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("Defined and set search context for the element {}: {}", this, definedContext);
         }
     }
 
-    private void checkSearchContext() {
-        if ((this.driver == null) && (context == null)) {
+    private SearchContext checkSearchContext() {
+        if ((driver == null) && (context == null)) {
             LOGGER.fatal("Couldn`t resolve search context for the web element {}:" +
                     " both driver and parent contexts are null", this);
             throw new SearchContextNotSetException();
         }
+        // context has higher priority than driver because
+        // it explicitly narrows down searching area
+        return (context != null) ? context : driver;
     }
 
-    private void setWebDriverFromContext() {
-        if (context == null) {
-            return;
-        }
-
-        if (context instanceof WebDriver) {
-            this.driver = (WebDriver) context;
-        } else if (context instanceof IKuoriWebElement) {
-            this.driver = ((IKuoriWebElement) context).getWebDriver();
-        } else {
-            LOGGER.warn("Couldn`t resolve web driver instance from the parent search context {}", context);
-        }
-    }
 }
